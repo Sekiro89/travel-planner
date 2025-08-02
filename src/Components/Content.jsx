@@ -1,14 +1,15 @@
-import { Box, Heading, Text, HStack, VStack, Image, IconButton } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { useRef, useState, useEffect } from "react";
-import parisimg from '../assets/parisimg.png';
-
-const dummyData = Array.from({ length: 10 }).map((_, index) => ({
-  title: "Paris",
-  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit done for the paris reachearch adkjadn akv baicfadn.`,
-  image: parisimg,
-  id: index
-}));
+import {
+  Box,
+  Heading,
+  Text,
+  HStack,
+  VStack,
+  Image,
+  IconButton
+} from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import placesData from "../assets/placesdata.js"; 
 
 const SCROLL_AMOUNT = 300;
 
@@ -77,68 +78,71 @@ const Content = () => {
         _hover={{ bg: "gray.100" }}
       />
 
-      <Box ref={scrollRef} overflowX="auto" overflowY="visible" px={8}
+      <Box
+        ref={scrollRef}
+        overflowX="auto"
+        overflowY="visible"
+        px={8}
         sx={{
-    scrollbarWidth: "none",        // Firefox
-    "&::-webkit-scrollbar": {
-      display: "none"              // Chrome, Safari
-    }
-         }}>
-      <Box display="flex" gap={6} w="max-content" overflow="visible">
-        <HStack spacing={6}>
-          {dummyData.map((item) => (
-            <Box
-              key={item.id}
-              flex="0 0 auto"
-              w="280px"
-              borderRadius="xl"
-              overflow="hidden"
-              bg="white"
-              boxShadow="lg"
-              role="group"
-              cursor="pointer"
-              position="relative"
-            >
-              <Image
-                src={item.image}
-                alt={item.title}
-                w="100%"
-                h="350px"
-                objectFit="cover"
-                transition="transform 0.3s ease"
-                _groupHover={{ transform: 'scale(1.05)' }}
-              />
-
-              {/* Slide-Up Overlay */}
+          scrollbarWidth: "none",
+          "&::-webkit-scrollbar": {
+            display: "none"
+          }
+        }}
+      >
+        <Box display="flex" gap={6} w="max-content" overflow="visible">
+          <HStack spacing={6}>
+            {placesData.map((item) => (
               <Box
-                position="absolute"
-                bottom="0"
-                left="0"
-                w="100%"
-                maxH="60px"
+                key={item.id}
+                flex="0 0 auto"
+                w="280px"
+                borderRadius="xl"
                 overflow="hidden"
-                bg="rgba(0,0,0,0.7)"
-                color="white"
-                transition="max-height 0.4s ease"
-                _groupHover={{ maxH: "250px" }}
+                bg="white"
+                boxShadow="lg"
+                role="group"
+                cursor="pointer"
+                position="relative"
               >
-                <VStack
-                  align="start"
-                  p={4}
-                  spacing={2}
-                  opacity={0.8}
-                  transition="opacity 0.3s ease"
-                  _groupHover={{ opacity: 1 }}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  w="100%"
+                  h="350px"
+                  objectFit="cover"
+                  transition="transform 0.3s ease"
+                  _groupHover={{ transform: "scale(1.05)" }}
+                />
+                <Box
+                  position="absolute"
+                  bottom="0"
+                  left="0"
+                  w="100%"
+                  maxH="60px"
+                  overflow="hidden"
+                  bg="rgba(0,0,0,0.7)"
+                  color="white"
+                  transition="max-height 0.4s ease"
+                  _groupHover={{ maxH: "250px" }}
                 >
-                  <Heading size="md">{item.title}</Heading>
-                  <Text fontSize="sm">{item.description}</Text>
-                </VStack>
+                  <VStack
+                    align="start"
+                    p={4}
+                    spacing={2}
+                    opacity={0.8}
+                    transition="opacity 0.3s ease"
+                    _groupHover={{ opacity: 1 }}
+                  >
+                    <Heading size="md">{item.title}</Heading>
+                    <Text fontSize="sm">{item.description}</Text>
+                  </VStack>
+                </Box>
               </Box>
-            </Box>
-          ))}
-        </HStack>
+            ))}
+          </HStack>
+        </Box>
       </Box>
-    </Box>
     </Box>
   );
 };

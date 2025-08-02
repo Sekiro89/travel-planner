@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { geocodeCity, getNearbyPlaces, getWeather } from '../api';
+/*import { useState } from 'react';
+import { geocodeCity, getNearbyPlaces, getWeather } from '/src/src.js';
 
 export default function Planner() {
   const [city, setCity] = useState('');
@@ -69,4 +69,4 @@ export default function Planner() {
       </div>
     </div>
   );
-}
+}*/

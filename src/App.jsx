@@ -4,7 +4,9 @@ import Navbar from './Components/Navbar'
 import HeroSection from './Components/Bannersection'
 import Content from './Components/Content'
 import Itinerarycards from './Components/Itenarycards'
+/*import Planner from './Components/Planner'*/
 import './App.css'
+
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
     <Navbar />
     <HeroSection />
     <Content />
-      <Itinerarycards />
+    <Itinerarycards />
+    
     </>
   );
 }
